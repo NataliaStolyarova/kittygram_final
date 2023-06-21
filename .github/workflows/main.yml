@@ -31,9 +31,7 @@ jobs:
         python -m pip install --upgrade pip 
         pip install -r ./backend/requirements.txt
         pip install -r ./backend/requirements/requirements.lint.txt
-    - name: Test with flake8
-      run: |
-        python -m flake8
+
     - name: Django tests
       env:
         POSTGRES_USER: kittygram_user
@@ -44,6 +42,12 @@ jobs:
       run: |
         cd backend/
         python manage.py test
+
+  linters:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test with flake8
+        run: python -m flake8
 
   build_and_push_to_docker_hub:
     runs-on: ubuntu-latest
