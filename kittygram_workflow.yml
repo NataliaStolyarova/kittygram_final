@@ -63,7 +63,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: type:sha
+          tags: type=sha
 
   frontend_tests:
     runs-on: ubuntu-latest
